@@ -1,0 +1,68 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/android-chrome-192x192.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> Pendekar dan Monster menyebrangi sungai
+        </a>
+    </div>
+</nav>
+
+<br>
+
+<div class="row">
+    <div class="col-6">
+        <h5>Tugas Kecerdasan Buatan</h5>
+        <h6>Definisikan identifikasi ruang keadaan, keadaan awal, tujuan, aturan, hingga penyelesaian untuk masalah berikut: Pendekar-Monster</h6>
+        <ol>
+            <li>Ada 3 Pendekar dan 3 Monster, mereka hendak menyebrang sungai</li>
+            <li>Hanya ada 1 perahu yang hanya dapat membawa 2 orang</li>
+            <li>Jika pada suatu lokasi jumlah monster lebih banyak dari pendekar, maka monster akan memakan pendekar</li>
+            <li>Perahu tak dapat melintasi sungai sendiri dengan tanpa ada orang yang ada di perahu tersebut</li>
+        </ol>
+    </div>
+    <div class="col-6">
+        <h5>Buat solusi pemecahan</h5>
+        <form action="/" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="jumlah pendekar dan monster" name="jumlah" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+            </div>
+            <div id="emailHelp" class="form-text fs-6">ex: 3 -- 3 pendekar dan 3 monster</div>
+        </form>
+
+        <div class="card">
+            <div class="card-header">
+                Solusi
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <th>
+                            <td>Angka Pergerakan</td>
+                            <td>Tepi Awal</td>
+                            <td>Pergerakan</td>
+                            <td>Tepi Akhir</td>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% table.forEach(data => { %>
+                            <tr>
+                                <td>
+                                    <%= data.perjalanan %>
+                                </td>
+                                <td>
+                                    <%= data.sisikanan %>
+                                </td>
+                                <td>
+                                    <%= data.perahu %>
+                                </td>
+                                <td>
+                                    <%= data.sisikiri %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
