@@ -75,3 +75,58 @@
         <% } %>
     </div>
 </div>
+
+<div class="row">
+    <div class="col">
+        <% if (typeof table !== 'undefined') { %>
+            <div class="card">
+            <div class="card-header">
+                Solusi
+            </div>
+            <div class="card-body">
+                <table class="table table-sm text-center">
+                    <thead>
+                        <tr>
+                            <th>Tepi Awal</th>
+                            <th>Pergerakan</th>
+                            <th>Tepi Akhir</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <% table.forEach(data => { %>
+                                <tr>
+                                    
+                                    <td class="">
+                                        <% const tepiawal = data.tepiawal.split(' ') %> 
+                                        <% tepiawal.forEach(el => { %>
+                                            <img src="<% if (el === 'P') { %>
+                                                /pendekar-kanan.png
+                                                <% } else { %>
+                                                /monster-kanan.png
+                                              
+                                            <% } %>" alt="tepiawal" style="width: 50px;">
+                                        <% }) %>
+                                    </td>
+                                    <td>
+                                        <% if (data.pergerakan.split(' ').length === 2) { %>
+                                            <%= data.pergerakan %>&#8594;
+                                            
+                                            <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
+                                                <%= data.pergerakan %>&#8592;
+                                            
+                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <%= data.tepiakhir %>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
