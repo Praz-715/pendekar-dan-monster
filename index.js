@@ -17,8 +17,8 @@ app.use('/favicon.ico', express.static('favicon.ico'));
 app.get('/', (req, res) => {
 
     if ('jumlah' in req.query) {
-        const main = (input) => {
-            const inputPendekarDanMonster = input;
+        
+            const inputPendekarDanMonster = req.query.jumlah;
 
 
             let bambang = [];
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 
             let perjalanan = 0;
-            bambang[0] = { perjalanan: "awal", tepiawal: sisikanan, tepiakhir: sisikiri, pergerakan: perahu }
+            bambang.push({ perjalanan: "awal", tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
                 // bambang.push(new Object({ perjalanan: "awal", tepiawal: sisikanan, tepiakhir: sisikiri, pergerakan: perahu }))
             while (sisikanan.length > 0) {
 
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
                     perahu.push(sisikanan[0], sisikanan[1])
                     sisikanan.splice(0, 2)
                     perjalanan++;
-                    // console.log({ perjalanan, sisikanan, sisikiri, perahu })
+                    bambang.push({ perjalanan: perjalanan, tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
                     if (perahu.includes('P')) {
                         sisikiri.push(perahu[perahu.indexOf('P')])
                         perahu.splice(perahu.indexOf('P'), 1)
@@ -54,14 +54,14 @@ app.get('/', (req, res) => {
                         perahu.push(sisikanan[sisikanan.indexOf('M')])
                         sisikanan.splice(sisikanan.indexOf('M'), 1)
                         perjalanan++;
-                        // console.log({ perjalanan, sisikanan, sisikiri, perahu })
+                        bambang.push({ perjalanan: perjalanan, tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
                         sisikiri.push(perahu[perahu.indexOf('M')])
                         perahu.splice(perahu.indexOf('M'), 1)
                     } else if (panjangP > panjangM) {
                         perahu.push(sisikanan[sisikanan.indexOf('P')])
                         sisikanan.splice(sisikanan.indexOf('P'), 1)
                         perjalanan++;
-                        // console.log({ perjalanan, sisikanan, sisikiri, perahu })
+                        bambang.push({ perjalanan: perjalanan, tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
                         sisikiri.push(perahu[perahu.indexOf('P')])
                         perahu.splice(perahu.indexOf('P'), 1)
                     }
@@ -73,16 +73,16 @@ app.get('/', (req, res) => {
                     break
                 }
                 perjalanan++;
-                // console.log({ perjalanan, sisikanan, sisikiri, perahu })
+                bambang.push({ perjalanan: perjalanan, tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
 
             }
 
-            // console.log({ perjalanan: "akhir", sisikanan, sisikiri, perahu })
+            bambang.push({ perjalanan: 'akhir', tepiawal: sisikanan.join(' '), tepiakhir: sisikiri.join(' '), pergerakan: perahu.join(' ') })
 
-            console.log(bambang)
-        }
-        console.log(main(req.query.jumlah))
-        res.render('index', { layout: 'layouts/main-layout', table: [] })
+            console.log(bambang[0].pergerakan.split(' ')[0])
+            
+        
+        res.render('index', { layout: 'layouts/main-layout', table: bambang })
     } else {
         res.render('index', { layout: 'layouts/main-layout' })
     }

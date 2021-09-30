@@ -28,41 +28,50 @@
             </div>
             <div id="emailHelp" class="form-text fs-6">ex: 3 -- 3 pendekar dan 3 monster</div>
         </form>
-
-        <div class="card">
+        <% if (typeof table !== 'undefined') { %>
+            <div class="card">
             <div class="card-header">
                 Solusi
             </div>
             <div class="card-body">
                 <table class="table table-sm">
                     <thead>
-                        <th>
-                            <td>Angka Pergerakan</td>
-                            <td>Tepi Awal</td>
-                            <td>Pergerakan</td>
-                            <td>Tepi Akhir</td>
-                        </th>
+                        <tr>
+                            <th>Angka Pergerakan</th>
+                            <th>Tepi Awal</th>
+                            <th>Pergerakan</th>
+                            <th>Tepi Akhir</th>
+                           
+                        </tr>
                     </thead>
                     <tbody>
-                        <% table.forEach(data => { %>
-                            <tr>
-                                <td>
-                                    <%= data.perjalanan %>
-                                </td>
-                                <td>
-                                    <%= data.sisikanan %>
-                                </td>
-                                <td>
-                                    <%= data.perahu %>
-                                </td>
-                                <td>
-                                    <%= data.sisikiri %>
-                                </td>
-                            </tr>
+                        
+                            <% table.forEach(data => { %>
+                                <tr>
+                                    <td>
+                                        <%= data.perjalanan %>
+                                    </td>
+                                    <td>
+                                        <%= data.tepiawal %>
+                                    </td>
+                                    <td>
+                                        <% if (data.pergerakan.split(' ').length === 2) { %>
+                                            <%= data.pergerakan %>&#8594;
+                                            
+                                            <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
+                                                <%= data.pergerakan %>&#8592;
+                                            
+                                        <% } %>
+                                    </td>
+                                    <td>
+                                        <%= data.tepiakhir %>
+                                    </td>
+                                </tr>
                             <% }) %>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        <% } %>
     </div>
 </div>
