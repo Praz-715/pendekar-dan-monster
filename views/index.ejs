@@ -111,15 +111,56 @@
                                     </td>
                                     <td>
                                         <% if (data.pergerakan.split(' ').length === 2) { %>
-                                            <%= data.pergerakan %>&#8594;
+                                            <% const pergerakan = data.pergerakan.split(' ') %> 
+                                            <div class="row">
+                                                <% pergerakan.forEach(el => { %>
+                                                    <div class="col">
+                                                        <img src="<% if (el === 'P') { %>
+                                                            /pendekar-kanan.png
+                                                         <% } else { %>
+                                                            /monster-kanan.png
+                                                        <% } %>" alt="pergerakan" style="width: 50px;">
+                                                    </div>
+                                                <% }) %>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><img src="/perahu.png" alt="perahu"  style="width: 50px;"></div>
+                                            </div>
+
+                                            <!-- <%= data.pergerakan %>&#8594; -->
                                             
-                                            <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
-                                                <%= data.pergerakan %>&#8592;
+                                        <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
+                                            
+                                            <% const pergerakan = data.pergerakan.split(' ') %> 
+                                            <div class="row">
+                                                <% pergerakan.forEach(el => { %>
+                                                    <div class="col">
+                                                        <img src="<% if (el === 'P') { %>
+                                                            /pendekar-kiri.png
+                                                         <% } else { %>
+                                                            /monster-kiri.png
+                                                        <% } %>" alt="pergerakan" style="width: 50px;">
+                                                    </div>
+                                                <% }) %>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><img src="/perahu.png" alt="perahu"  style="width: 50px;"></div>
+                                            </div>
+
+                                            <!-- <%= data.pergerakan %>&#8592; -->
                                             
                                         <% } %>
                                     </td>
                                     <td>
-                                        <%= data.tepiakhir %>
+                                        <% const tepiakhir = data.tepiakhir.split(' ') %> 
+                                        <% tepiakhir.forEach(el => { %>
+                                            <img src="<% if (el === 'P') { %>
+                                                /pendekar-depan.png
+                                                <% } else { %>
+                                                /monster-depan.png
+                                              
+                                            <% } %>" alt="tepiakhir" style="width: 50px;">
+                                        <% }) %>
                                     </td>
                                 </tr>
                             <% }) %>
