@@ -23,7 +23,7 @@
     </div>
     <div class="col-6">
         <h5>Buat solusi pemecahan</h5>
-        <form action="/" method="GET">
+        <form action="/pendekar-monster" method="GET">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="jumlah pendekar dan monster" name="jumlah" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
@@ -32,22 +32,22 @@
         </form>
         <% if (typeof table !== 'undefined') { %>
             <div class="card">
-            <div class="card-header">
-                Solusi
-            </div>
-            <div class="card-body">
-                <table class="table table-sm">
-                    <thead>
-                        <tr>
-                            <th>Angka Pergerakan</th>
-                            <th>Tepi Awal</th>
-                            <th>Pergerakan</th>
-                            <th>Tepi Akhir</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
+                <div class="card-header">
+                    Solusi
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Angka Pergerakan</th>
+                                <th>Tepi Awal</th>
+                                <th>Pergerakan</th>
+                                <th>Tepi Akhir</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
                             <% table.forEach(data => { %>
                                 <tr>
                                     <td>
@@ -59,26 +59,26 @@
                                     <td>
                                         <% if (data.pergerakan.split(' ').length === 2) { %>
                                             <%= data.pergerakan %>&#8594;
-                                            
-                                            <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
-                                                <%= data.pergerakan %>&#8592;
-                                            
-                                        <% } %>
+
+                                                <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
+                                                    <%= data.pergerakan %>&#8592;
+
+                                                        <% } %>
                                     </td>
                                     <td>
                                         <%= data.tepiakhir %>
                                     </td>
                                 </tr>
-                            <% }) %>
+                                <% }) %>
                         </tbody>
                     </table>
                 </div>
             </div>
-        <% } %>
+            <% } %>
     </div>
 </div>
 
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <% if (typeof table !== 'undefined') { %>
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -91,85 +91,85 @@
                     <table class="table table-sm text-center">
                         <tbody>
                             <tr>
-                                    
+
                                 <td class="">
-                                    <% const tepiawal = table[4].tepiawal.split(' ').sort() %> 
-                                    <% tepiawal.forEach(el => { %>
-                                        <% if (el === 'P') { %>
+                                    <% const tepiawal = table[4].tepiawal.split(' ').sort() %>
+                                        <% tepiawal.forEach(el => { %>
+                                            <% if (el === 'P') { %>
                                                 <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
-                                            
-                                        <% } else if(el === 'M') { %>
-                                                <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">                                              
-                                        <% } %>
-                                        
-                                    <% }) %>
+
+                                                <% } else if(el === 'M') { %>
+                                                    <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">
+                                                    <% } %>
+
+                                                        <% }) %>
                                 </td>
                                 <td>
                                     <% if (table[4].pergerakan.split(' ').length === 2) { %>
-                                        <% const pergerakan = table[4].pergerakan.split(' ') %> 
-                                        
-                                        <div class="d-inline-block">
-                                            <% pergerakan.forEach(el => { %>
-                                                <% if (el === 'P') { %>
+                                        <% const pergerakan = table[4].pergerakan.split(' ') %>
+
+                                            <div class="d-inline-block">
+                                                <% pergerakan.forEach(el => { %>
+                                                    <% if (el === 'P') { %>
                                                         <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
-                                                    
-                                                <% } else if(el === 'M') { %>
-                                                        <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">                                              
-                                                <% } %>
-                                                
-                                            <% }) %>
-                                        </div>
-                                        <div class="d-block mt-n1"></div>
-                                            <img src="/perahu.png" alt="perahu"  style="width: 70px;">
-                                        </div>
 
-                                        <!-- <%= table[4].pergerakan %>&#8594; -->
-                                        
-                                    <% } else if(table[4].pergerakan.split(' ').length === 1 && table[4].pergerakan.split(' ')[0] != '') { %>
-                                        
-                                        <% const pergerakan = table[4].pergerakan.split(' ') %> 
-                                        <div class="d-inline-block">
-                                            <% pergerakan.forEach(el => { %>
-                                                <% if (el === 'P') { %>
-                                                        <img src="/pendekar-kiri.png" alt="tepiawal" style="width: 50px;">
-                                                    
-                                                <% } else if(el === 'M') { %>
-                                                        <img src="/monster-kiri.png" alt="tepiawal" style="width: 50px;">                                              
-                                                <% } %>
-                                                
-                                            <% }) %>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col"><img src="/perahu.png" alt="perahu"  style="width: 70px;"></div>
-                                        </div>
+                                                        <% } else if(el === 'M') { %>
+                                                            <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">
+                                                            <% } %>
 
-                                        <!-- <%= table[4].pergerakan %>&#8592; -->
-                                        
-                                    <% } %>
-                                </td>
-                                <td>
-                                    <% const tepiakhir = table[4].tepiakhir.split(' ').sort().reverse() %> 
+                                                                <% }) %>
+                                            </div>
+                                            <div class="d-block mt-n1"></div>
+                                            <img src="/perahu.png" alt="perahu" style="width: 70px;">
+                </div>
+
+                <!-- <%= table[4].pergerakan %>&#8594; -->
+
+                <% } else if(table[4].pergerakan.split(' ').length === 1 && table[4].pergerakan.split(' ')[0] != '') { %>
+
+                    <% const pergerakan = table[4].pergerakan.split(' ') %>
+                        <div class="d-inline-block">
+                            <% pergerakan.forEach(el => { %>
+                                <% if (el === 'P') { %>
+                                    <img src="/pendekar-kiri.png" alt="tepiawal" style="width: 50px;">
+
+                                    <% } else if(el === 'M') { %>
+                                        <img src="/monster-kiri.png" alt="tepiawal" style="width: 50px;">
+                                        <% } %>
+
+                                            <% }) %>
+                        </div>
+                        <div class="row">
+                            <div class="col"><img src="/perahu.png" alt="perahu" style="width: 70px;"></div>
+                        </div>
+
+                        <!-- <%= table[4].pergerakan %>&#8592; -->
+
+                        <% } %>
+                            </td>
+                            <td>
+                                <% const tepiakhir = table[4].tepiakhir.split(' ').sort().reverse() %>
                                     <% tepiakhir.forEach(el => { %>
                                         <% if (el === 'P') { %>
-                                                <img src="/pendekar-depan.png" alt="tepiawal" style="width: 70px;">
-                                            
-                                        <% } else if(el === 'M') { %>
-                                                <img src="/monster-depan.png" alt="tepiawal" style="width: 70px;">                                              
-                                        <% } %>
-                                        
-                                    <% }) %>
-                                </td>
+                                            <img src="/pendekar-depan.png" alt="tepiawal" style="width: 70px;">
+
+                                            <% } else if(el === 'M') { %>
+                                                <img src="/monster-depan.png" alt="tepiawal" style="width: 70px;">
+                                                <% } %>
+
+                                                    <% }) %>
+                            </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- <img src="/monster-depan.png" class="d-block w-100" style="height: 400px;" alt="monster"> -->
-                <div class="carousel-caption d-none d-md-block">
+                            </tbody>
+                            </table>
+            </div>
+            <!-- <img src="/monster-depan.png" class="d-block w-100" style="height: 400px;" alt="monster"> -->
+            <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
-                </div>
             </div>
-            <!-- <div class="carousel-item">
+        </div>
+        <!-- <div class="carousel-item">
                 <img src="/monster-kiri.png" class="d-block w-100" style="height: 400px;" alt="monster">
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
@@ -182,114 +182,114 @@
                 <h5>Third slide label</h5>
                 <p>Some representative placeholder content for the third slide.</p>
                 </div> -->
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
         </button>
-    <% } %>
-</div>
+<% } %>
+    </div>
 
-<div class="row">
-    <div class="col">
-        <% if (typeof table !== 'undefined') { %>
-            <div class="card">
-            <div class="card-header">
-                Solusi
-            </div>
-            <div class="card-body">
-                <table class="table table-sm text-center">
-                    <thead>
-                        <tr>
-                            <th>Tepi Awal</th>
-                            <th>Pergerakan</th>
-                            <th>Tepi Akhir</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                            <% table.forEach(data => { %>
+    <div class="row">
+        <div class="col">
+            <% if (typeof table !== 'undefined') { %>
+                <div class="card">
+                    <div class="card-header">
+                        Solusi
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm text-center">
+                            <thead>
                                 <tr>
-                                    
-                                    <td class="">
-                                        <% const tepiawal = data.tepiawal.split(' ').sort() %> 
-                                        <% tepiawal.forEach(el => { %>
-                                            <% if (el === 'P') { %>
-                                                    <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
-                                                
-                                            <% } else if(el === 'M') { %>
-                                                    <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">                                              
+                                    <th>Tepi Awal</th>
+                                    <th>Pergerakan</th>
+                                    <th>Tepi Akhir</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <% table.forEach(data => { %>
+                                    <tr>
+
+                                        <td class="">
+                                            <% const tepiawal = data.tepiawal.split(' ').sort() %>
+                                                <% tepiawal.forEach(el => { %>
+                                                    <% if (el === 'P') { %>
+                                                        <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
+
+                                                        <% } else if(el === 'M') { %>
+                                                            <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">
+                                                            <% } %>
+
+                                                                <% }) %>
+                                        </td>
+                                        <td>
+                                            <% if (data.pergerakan.split(' ').length === 2) { %>
+                                                <% const pergerakan = data.pergerakan.split(' ') %>
+
+                                                    <div class="d-inline-block">
+                                                        <% pergerakan.forEach(el => { %>
+                                                            <% if (el === 'P') { %>
+                                                                <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
+
+                                                                <% } else if(el === 'M') { %>
+                                                                    <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">
+                                                                    <% } %>
+
+                                                                        <% }) %>
+                                                    </div>
+                                                    <div class="d-block mt-n1"></div>
+                                                    <img src="/perahu.png" alt="perahu" style="width: 70px;">
+                    </div>
+
+                    <!-- <%= data.pergerakan %>&#8594; -->
+
+                    <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
+
+                        <% const pergerakan = data.pergerakan.split(' ') %>
+                            <div class="d-inline-block">
+                                <% pergerakan.forEach(el => { %>
+                                    <% if (el === 'P') { %>
+                                        <img src="/pendekar-kiri.png" alt="tepiawal" style="width: 50px;">
+
+                                        <% } else if(el === 'M') { %>
+                                            <img src="/monster-kiri.png" alt="tepiawal" style="width: 50px;">
                                             <% } %>
-                                            
-                                        <% }) %>
-                                    </td>
-                                    <td>
-                                        <% if (data.pergerakan.split(' ').length === 2) { %>
-                                            <% const pergerakan = data.pergerakan.split(' ') %> 
-                                            
-                                            <div class="d-inline-block">
-                                                <% pergerakan.forEach(el => { %>
-                                                    <% if (el === 'P') { %>
-                                                            <img src="/pendekar-kanan.png" alt="tepiawal" style="width: 50px;">
-                                                        
-                                                    <% } else if(el === 'M') { %>
-                                                            <img src="/monster-kanan.png" alt="tepiawal" style="width: 50px;">                                              
-                                                    <% } %>
-                                                    
-                                                <% }) %>
-                                            </div>
-                                            <div class="d-block mt-n1"></div>
-                                                <img src="/perahu.png" alt="perahu"  style="width: 70px;">
-                                            </div>
 
-                                            <!-- <%= data.pergerakan %>&#8594; -->
-                                            
-                                        <% } else if(data.pergerakan.split(' ').length === 1 && data.pergerakan.split(' ')[0] != '') { %>
-                                            
-                                            <% const pergerakan = data.pergerakan.split(' ') %> 
-                                            <div class="d-inline-block">
-                                                <% pergerakan.forEach(el => { %>
-                                                    <% if (el === 'P') { %>
-                                                            <img src="/pendekar-kiri.png" alt="tepiawal" style="width: 50px;">
-                                                        
-                                                    <% } else if(el === 'M') { %>
-                                                            <img src="/monster-kiri.png" alt="tepiawal" style="width: 50px;">                                              
-                                                    <% } %>
-                                                    
                                                 <% }) %>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col"><img src="/perahu.png" alt="perahu"  style="width: 70px;"></div>
-                                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col"><img src="/perahu.png" alt="perahu" style="width: 70px;"></div>
+                            </div>
 
-                                            <!-- <%= data.pergerakan %>&#8592; -->
-                                            
-                                        <% } %>
-                                    </td>
-                                    <td>
-                                        <% const tepiakhir = data.tepiakhir.split(' ').sort().reverse() %> 
+                            <!-- <%= data.pergerakan %>&#8592; -->
+
+                            <% } %>
+                                </td>
+                                <td>
+                                    <% const tepiakhir = data.tepiakhir.split(' ').sort().reverse() %>
                                         <% tepiakhir.forEach(el => { %>
                                             <% if (el === 'P') { %>
-                                                    <img src="/pendekar-depan.png" alt="tepiawal" style="width: 70px;">
-                                                
-                                            <% } else if(el === 'M') { %>
-                                                    <img src="/monster-depan.png" alt="tepiawal" style="width: 70px;">                                              
-                                            <% } %>
-                                            
-                                        <% }) %>
-                                    </td>
+                                                <img src="/pendekar-depan.png" alt="tepiawal" style="width: 70px;">
+
+                                                <% } else if(el === 'M') { %>
+                                                    <img src="/monster-depan.png" alt="tepiawal" style="width: 70px;">
+                                                    <% } %>
+
+                                                        <% }) %>
+                                </td>
                                 </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
+                                <% }) %>
+                                    </tbody>
+                                    </table>
                 </div>
-            </div>
+        </div>
         <% } %>
     </div>
-</div>
+    </div>
